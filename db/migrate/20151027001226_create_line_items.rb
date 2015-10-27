@@ -3,9 +3,9 @@ class CreateLineItems < ActiveRecord::Migration
     create_table :line_items do |t|
       t.string :name
       t.references :campaign, index: true
-      t.decimal :booked_amount
-      t.decimal :actual_amount
-      t.decimal :adjustments
+      t.decimal :booked_amount, precision: 16, scale: 10
+      t.decimal :actual_amount, precision: 16, scale: 10
+      t.decimal :adjustments, precision: 16, scale: 10
 
       t.timestamps null: false
     end

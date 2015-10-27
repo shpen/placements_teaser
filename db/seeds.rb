@@ -30,6 +30,6 @@ ActiveRecord::Base.transaction do
 
     # Create line_item and force id
     LineItem.create(campaign: campaign, name: line_item_name, booked_amount: booked_amount,
-      actual_amount: actual_amount, adjustments: adjustments).update_column(:id, id)
+      actual_amount: actual_amount, adjustments: adjustments, billable_amount: actual_amount + adjustments).update_column(:id, id)
   end
 end
