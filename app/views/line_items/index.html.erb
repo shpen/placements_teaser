@@ -5,31 +5,13 @@
 <%= will_paginate @posts %>
 
 <div class="table-responsive">
-  <table class="table table-striped table-hover">
+  <table id="list-items" class="table table-striped table-hover">
     <thead>
-      <tr>
-        <th>Name</th>
-        <th>Campaign</th>
-        <th>Booked amount</th>
-        <th>Actual amount</th>
-        <th>Adjustments</th>
-      </tr>
+      <%= render 'table_headers' %>
     </thead>
 
     <tbody>
-      <% @line_items.each do |line_item| %>
-        <tr>
-          <td><%= line_item.name %></td>
-          <td><%= line_item.campaign.name %></td>
-          <td><%= line_item.booked_amount %></td>
-          <td><%= line_item.actual_amount %></td>
-          <td><%= line_item.adjustments %></td>
-        </tr>
-      <% end %>
+      <%= render 'table_page' %>
     </tbody>
   </table>
 </div>
-
-<%= will_paginate @posts %>
-
-<br>

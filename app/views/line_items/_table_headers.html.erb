@@ -1,0 +1,7 @@
+<tr>
+  <th><%= sortable_header "Name", "name", @params[:sort], @params[:order] %></th>
+  <th><%= sortable_header "Campaign", "campaigns.name", @params[:sort], @params[:order] %></th>
+  <th><%= sortable_header "Booked amount", "booked_amount", @params[:sort], @params[:order] %></th>
+  <th><%= sortable_header "Actual amount", "actual_amount", @params[:sort], @params[:order] %></th>
+  <th><%= sortable_header "Adjustments", "adjustments", @params[:sort], @params[:order] %></th>
+</tr>

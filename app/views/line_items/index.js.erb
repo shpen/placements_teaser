@@ -1,0 +1,11 @@
+var table_body = $("#list-items tbody");
+var body_content = "<%= j render 'table_page' %>";
+table_body.html(body_content);
+
+var table_header = $("thead");
+var header_content = "<%= j render 'table_headers' %>";
+table_header.html(header_content);
+
+// Update pagination links to reflect current page
+$("div.pagination").replaceWith("<%= j will_paginate @posts %>");
+$(ajaxifyPaginate);
