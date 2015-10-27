@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @line_item.name %>
+</p>
+
+<p>
+  <strong>Campaign:</strong>
+  <%= @line_item.campaign %>
+</p>
+
+<p>
+  <strong>Booked amount:</strong>
+  <%= @line_item.booked_amount %>
+</p>
+
+<p>
+  <strong>Actual amount:</strong>
+  <%= @line_item.actual_amount %>
+</p>
+
+<p>
+  <strong>Adjustments:</strong>
+  <%= @line_item.adjustments %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>
