@@ -13,3 +13,19 @@ th {
 		}
 	}
 }
+
+td {
+	a .glyphicon {
+		display: none;
+	}
+
+	&:hover {
+		a .glyphicon {
+			display: inline-block;
+		}
+	}
+
+	.content {
+		display: inline
+	}
+}

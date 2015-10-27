@@ -27,12 +27,11 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1.json
   def update
     respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
+      adjustments = line_item_params[:adjustments].to_f
+      if @line_item.update(adjustments: adjustments, billable_amount: adjustments + @line_item.actual_amount)
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.js { "alert('@line_item.errors.full_message')"; }
       end
     end
   end
@@ -45,6 +44,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:name, :campaign_id, :booked_amount, :actual_amount, :adjustments)
+      params.require(:line_item).permit(:adjustments)
     end
 end

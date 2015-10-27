@@ -1,0 +1,24 @@
+<tr data-id="<%= line_item.id %>">
+  <td><%= line_item.name %></td>
+  <td><%= line_item.campaign.name %></td>
+  <td><%= line_item.booked_amount %></td>
+  <td><%= line_item.actual_amount %></td>
+  <td class="adjustments">
+    <div class="content">
+      <%= line_item.adjustments %>
+    </div>
+
+    <%= form_for line_item, remote: true, html: { class: "collapse form-inline" } do |f| %>
+      <%= f.text_field :adjustments, class: "form-control" %>
+      <%= button_tag type: :submit, class: "btn btn-success" do %>
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      <% end %>
+      <%= button_tag type: :reset, class: "cancel btn btn-danger" do %>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+    <% end %>
+    
+    <a href="#"><span class="glyphicon glyphicon-edit pull-right" aria-hidden="true"></span></a>
+    </td>
+  <td class="billable_amount"><%= line_item.billable_amount %></td>
+</tr>
