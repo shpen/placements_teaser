@@ -8,17 +8,7 @@ function ajaxifyPaginate() {
 }
 $(ajaxifyPaginate);
 
-// Editable adjustments
-$(document).on('click', 'td.adjustments a', function() {
-    $(this).siblings('form').show();
-    $(this).siblings('.content').hide();
-});
-
-
-
-
-
-
+// Edit row
 $(document).on('click', 'button.edit', function() {
     var id = $(this).closest('tr').data('id');
     $('tr.edit-row[data-id="' + id + '"]').show();
@@ -29,4 +19,9 @@ $(document).on('click', 'button.done', function() {
     var tr = $(this).closest('tr');
     tr.hide();
     $('tr.data-row[data-id="' + tr.data('id') + '"] button.edit').show();
+});
+
+// Show loading spinner while waiting for ajax response
+$(document).on('click', 'form button:not(.cancel), th a, ul.pagination li a', function() {
+    $("#ajax_loader").show();
 });

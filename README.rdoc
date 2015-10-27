@@ -1,4 +1,4 @@
-== README
+= Placements Teaser
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -26,3 +26,65 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+== Installation
+
+* Install Rails: http://railsinstaller.org/
+
+* Clone repo:
+	$ git clone git@github.com:shpen/placements_teaser.git
+
+* Install gems
+	$ bundle install
+
+* Initialize database
+	$ rake db:migrate
+	$ rake db:seed
+
+* Start rails server
+	$ rails s
+
+== Implementation
+
+I used sqlite3, since it would be easiest to setup, avoiding the complexity of
+a Postgres service in our development environment. In production though, I would
+switch to Postgres and a different server gem such as Puma.
+
+I added basic bootstrap styling to make the interface easier on the eyes, as well
+as adding support for editing on mobile. The experience is not best on mobile,
+considering the table is quite wide, but it works. More time could be spent on
+upgrading the mobile experience, but I believe it would be better just to
+develop a native app at that point.
+
+The app functions basically as a one page app, with all interaction occuring through
+ajax calls. For a business that is building a consumer app, supporting users who
+disable or don't support javascript would be preferred, but in this case I wanted to
+focus on the ideal javascript-enabled experience.
+
+Below are the specific features I chose to implement:
+
+* Edit line-item adjustments.
+* See each item's billable amount.
+* Flag individual line items as reviewed.
+* Flag campaigns as reviewed.
+* Sort by columns.
+
+I grouped my development of these into three sections: sorting, adjustment editing,
+and flagging.
+
+Sorting was fairly straightforward and only caused trouble when trying
+to sort by campaign, since that data was in a different table, so I had to create
+a special sort-case for that.
+
+Adjustment editing went along with showing billable amount, since that would be
+updated when the adjustment was changed. I decided to create an extra column in
+the table for the billable amount, otherwise I would have to recalculate the
+total each time the data is shown. I could have done it on the fly, but the
+trade-offs there would really depend on production needs and whether space or
+speed was more of a concern.
+
+Flagging also involved adding another column to both tables. I chose to keep the flags
+separate instead of applying a flag to each individual line item when the campaign
+was flagged, because otherwise the logic for determining if we should disable
+the campaign flag would be too complex. I also added a validation to prevent unflagging,
+in case someone tried to edit the source and submit 'false' for the reviewed flag.

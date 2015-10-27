@@ -1,11 +1,12 @@
-var table_body = $("#line-items tbody");
-var body_content = "<%= j render 'table_page' %>";
-table_body.html(body_content);
+// Update contents
+$("#line-items tbody").html("<%= j render 'table_page' %>");
 
-var table_header = $("thead");
-var header_content = "<%= j render 'table_headers' %>";
-table_header.html(header_content);
+// Update headers
+$("thead").html("<%= j render 'table_headers' %>");
 
 // Update pagination links to reflect current page
 $("div.pagination").replaceWith("<%= j will_paginate @posts %>");
 $(ajaxifyPaginate);
+
+$(detectMobile);
+$("#ajax_loader").hide();

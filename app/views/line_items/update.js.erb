@@ -3,3 +3,6 @@ $('tr.data-row[data-id="<%= @line_item.id %>"]').replaceWith("<%= j render 'tabl
 <% if @update_edit_row %>
 	$('tr.edit-row[data-id="<%= @line_item.id %>"]').replaceWith("<%= j render 'table_edit_row', line_item: @line_item, reviewed: @reviewed %>");
 <% end %>
+
+$(detectMobile);
+$("#ajax_loader").hide();

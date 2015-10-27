@@ -29,6 +29,12 @@
 
 <div class="container">
   <%= yield %>
+
+  <div id="ajax_loader" class="collapse">
+    <div class="image_wrapper">
+      <%= image_tag "gears.gif", alt: "Loading...", title: "Loading..." %>
+    </div>
+  </div>
 </div>
 
 </body>

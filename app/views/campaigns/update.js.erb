@@ -1,4 +1,8 @@
+// Update all affected rows
 <% @campaign.line_items.each do |line_item| %>
 	$('tr.data-row[data-id="<%= line_item.id %>"]').replaceWith("<%= j render 'line_items/table_data_row', line_item: line_item, reviewed: true %>");
 	$('tr.edit-row[data-id="<%= line_item.id %>"]').replaceWith("<%= j render 'line_items/table_edit_row', line_item: line_item, reviewed: true %>");
 <% end %>
+
+$(detectMobile);
+$("#ajax_loader").hide();
