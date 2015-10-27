@@ -1,0 +1,30 @@
+<tr class="edit-row collapse" data-id="<%= line_item.id %>">
+  <td colspan="6">
+    <div class="col-sm-6">
+      <%= form_for line_item, remote: true, html: { class: "form-inline pull-left" } do |f| %>
+        <%= f.hidden_field :reviewed, value: true %>
+        <%= button_tag 'Flag as reviewed', type: :submit, class: "btn btn-primary", disabled: reviewed %>
+      <% end %>
+
+      <%= form_for line_item.campaign, remote: true, html: { class: "form-inline pull-right" } do |f| %>
+        <%= f.hidden_field :reviewed, value: true %>
+        <%= button_tag 'Flag campaign as reviewed', type: :submit, class: "btn btn-primary", disabled: line_item.campaign.reviewed? %>
+      <% end %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= form_for line_item, remote: true, html: { class: "form-inline pull-right" } do |f| %>
+        <%= f.label 'Update Adjustments:' %>
+        <%= f.text_field :adjustments, class: "form-control", disabled: reviewed %>
+        <%= button_tag type: :submit, class: "btn btn-success", disabled: reviewed do %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <% end %>
+        <%= button_tag type: :reset, class: "cancel btn btn-danger", disabled: reviewed do %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+
+  <td><button class="btn btn-info done">Done</button></td>
+</tr>

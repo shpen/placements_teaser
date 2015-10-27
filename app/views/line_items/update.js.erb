@@ -1,1 +1,5 @@
-$('tr[data-id="<%= @line_item.id %>"]').replaceWith("<%= j render 'table_line', line_item: @line_item %>");
+$('tr.data-row[data-id="<%= @line_item.id %>"]').replaceWith("<%= j render 'table_data_row', line_item: @line_item, reviewed: @reviewed %>");
+
+<% if @update_edit_row %>
+	$('tr.edit-row[data-id="<%= @line_item.id %>"]').replaceWith("<%= j render 'table_edit_row', line_item: @line_item, reviewed: @reviewed %>");
+<% end %>

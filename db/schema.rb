@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027052046) do
+ActiveRecord::Schema.define(version: 20151027204136) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "reviewed"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151027052046) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.decimal  "billable_amount", precision: 16, scale: 10
+    t.boolean  "reviewed"
   end
 
   add_index "line_items", ["campaign_id"], name: "index_line_items_on_campaign_id"

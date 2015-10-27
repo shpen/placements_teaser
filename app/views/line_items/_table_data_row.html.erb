@@ -1,0 +1,9 @@
+<tr class="data-row <%= reviewed ? 'success' : '' %>" data-id="<%= line_item.id %>">
+  <td><%= line_item.name %></td>
+  <td><%= line_item.campaign.name %></td>
+  <td><%= line_item.booked_amount %></td>
+  <td><%= line_item.actual_amount %></td>
+  <td><%= line_item.adjustments %></td>
+  <td><%= line_item.billable_amount %></td>
+  <td><button class="btn btn-info edit">Edit</button></td>
+</tr>

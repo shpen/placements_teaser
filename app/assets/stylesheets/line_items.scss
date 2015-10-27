@@ -23,9 +23,26 @@ td {
 		a .glyphicon {
 			display: inline-block;
 		}
+
+		button.edit {
+			display: inline-block;
+		}
 	}
 
 	.content {
-		display: inline
+		display: inline;
+	}
+}
+
+tr {
+	button.edit {
+		visibility: hidden;
+	}
+
+	&:hover {
+
+		button.edit {
+			visibility: visible;
+		}
 	}
 }
